@@ -4,7 +4,7 @@
 
 Mikrotik Winbox in browser
 
-This chart setup Wine with [KasmVNC]() to start Winbox in browser.
+This chart setup [Wine](https://www.winehq.org/) with [KasmVNC](https://github.com/kasmtech/KasmVNC) to start Winbox in browser.
 
 Currently only available for amd64 platforms.
 
