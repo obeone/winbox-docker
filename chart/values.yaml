@@ -7,7 +7,8 @@
 
 image:
   # -- image repository
-  repository: obebete/winbox
+  # (Same image also avalailable on docker hub : obebete/winbox)
+  repository: ghcr.io/obeone/winbox:latest
   # -- image tag
   # @default -- chart.appVersion
   tag: 
