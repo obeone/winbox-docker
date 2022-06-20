@@ -4,6 +4,11 @@ Use Mikrotik's Winbox with your browser !
 
 Using [KasmVNC](https://github.com/kasmtech/KasmVNC), this docker starts Winbox with Wine and make it avaiable in any browser.
 
+## Screenshots
+![Login screenshot](docs/screenshots/login.png)
+
+![Main screenshot](docs/screenshots/main.png)
+
 ## Usage
 ### Docker
 ```sh
