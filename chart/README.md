@@ -25,7 +25,7 @@ Kubernetes: `>=1.16.0-0`
 ## TL;DR
 
 ```console
-helm repo add obeone https://obeone.github.io/charts/
+helm repo add obeone https://charts.obeone.cloud
 helm repo update
 helm install winbox obeone/winbox
 ```
