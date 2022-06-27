@@ -37,10 +37,7 @@ RUN bash /tmp/winetricks_install.sh && \
     update_winetricks
 ######### End Customizations ###########
 
-RUN chown 1000:0 $HOME
-
-ENV HOME /home/kasm-user
 WORKDIR $HOME
-RUN mkdir -p $HOME && chown -R 1000:0 $HOME
+RUN mkdir -p $HOME/.wine && chown -R 1000:0 $HOME
 
 USER 1000
