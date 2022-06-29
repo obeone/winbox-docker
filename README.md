@@ -27,4 +27,4 @@ docker run -d --shm-size=512m -p 6901:6901 -e VNC_PW=password -v winbox_wine:/ho
 ```
 
 ### Kubernetes (Helm)
-A helm chart exists, just follow [documentation](chart/README.md)
+A helm chart exists, just follow [documentation](https://github.com/obeone/charts)
