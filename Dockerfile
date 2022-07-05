@@ -20,7 +20,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y wine-development
 
-RUN export WINBOX_URL=$(curl -s -L https://mt.lv/winbox64 -o /dev/null -w '%{url_effective}') && \
+RUN WINBOX_URL=$(curl -s -L https://mt.lv/winbox64 -o /dev/null -w '%{url_effective}'); \
     [[ ${WINBOX_URL} =~ /([0-9.]+)/ ]] && echo ${BASH_REMATCH[1]}.0 > /winbox_version && \
     mkdir -p /opt/winbox && \
     wget ${WINBOX_URL} -O /opt/winbox/winbox64.exe
