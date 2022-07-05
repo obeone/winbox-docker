@@ -62,6 +62,37 @@ jobs:
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
           context: .
-          push: true
+          load: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          cache-to: type=gha,mode=min
+          cache-to: type=gha,mode=max
+          cache-from: type=gha,mode=max
+          
+      - name: Getting download URL
+        id: url
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ${{ env.TEMPORARY_IMAGE }}
+          run: echo ::set-output name=url::$(cat /winbox_url)
+
+      - name: Parse semver string
+        id: semver_parser 
+        uses: booxmedialtd/ws-action-parse-semver@v1
+        with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe%
+          input_string: ${{ steps.url.outputs.url }}
+          version_extractor_regex: 'https://download.mikrotik.com/winbox/([^/]*)/winbox64.exe%'
+
+
+      - name: Publish image
+        id: build-and-push
+        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        with:
+          context: .
+          push: true
+          cache-to: type=gha,mode=max
+          cache-from: type=gha,mode=max
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.semver_parser.outputs.version }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ ${{ steps.semver_parser.outputs.major }} }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.version }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ ${{ steps.semver_parser.outputs.major }} }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
