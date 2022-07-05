@@ -71,7 +71,7 @@ jobs:
         id: url
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ env.TEMPORARY_IMAGE }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           shell: /bin/sh
           run: echo ::set-output name=url::$(cat /winbox_url)
 
