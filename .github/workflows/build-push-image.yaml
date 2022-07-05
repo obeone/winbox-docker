@@ -68,7 +68,7 @@ jobs:
           cache-to: type=gha,mode=max
           cache-from: type=gha,mode=max
           
-      - name: Getting download URL
+      - name: Getting version
         id: version
         uses: addnab/docker-run-action@v3
         with:
@@ -84,7 +84,6 @@ jobs:
         uses: booxmedialtd/ws-action-parse-semver@v1
         with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe
           input_string: "${{ steps.version.outputs.version }}"
-          version_extractor_regex: 'winbox\/(.*\.0)\/winbox64.exe$'
 
 
       - name: Publish image
