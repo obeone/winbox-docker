@@ -92,7 +92,7 @@ jobs:
           cache-from: type=gha,mode=max
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.semver_parser.outputs.version }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ ${{ steps.semver_parser.outputs.major }} }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.semver_parser.outputs.major }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.version }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ ${{ steps.semver_parser.outputs.major }} }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.major }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
