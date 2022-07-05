@@ -20,7 +20,8 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y wine-development
 
-RUN export WINBOX_URL=$(curl -s -L https://mt.lv/winbox64 -o /dev/null -w '%{url_effective}')
+RUN export WINBOX_URL=$(curl -s -L https://mt.lv/winbox64 -o /dev/null -w '%{url_effective}') && \
+    echo ${WINBOX_URL} > /winbox_url && \
 ADD --chown=1000:0 ${WINBOX_URL} /opt/winbox/winbox64.exe
 
 ADD startup.sh $STARTUPDIR/custom_startup.sh
@@ -30,8 +31,7 @@ RUN chmod 755 $STARTUPDIR/custom_startup.sh
 
 # Update the desktop environment to be optimized for a single application
 RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/ && \
-    cp /usr/share/extra/backgrounds/bg_kasm.png /usr/share/extra/backgrounds/bg_default.png && \
-    echo "${WINBOX_URL}" > /winbox_url
+    cp /usr/share/extra/backgrounds/bg_kasm.png /usr/share/extra/backgrounds/bg_default.png
 RUN apt-get remove -y xfce4-panel
 
 ADD winetricks_install.sh /tmp
