@@ -82,9 +82,9 @@ jobs:
       - name: Parse semver string
         id: semver_parser 
         uses: booxmedialtd/ws-action-parse-semver@v1
-        with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe%
+        with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe
           input_string: "${{ steps.url.outputs.url }}"
-          version_extractor_regex: 'https://download.mikrotik.com/winbox/([^/]*)/winbox64.exe%'
+          version_extractor_regex: 'winbox\/([^/]*)\/winbox64.exe'
 
 
       - name: Publish image
