@@ -72,6 +72,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ${{ env.TEMPORARY_IMAGE }}
+          shell: /bin/sh
           run: echo ::set-output name=url::$(cat /winbox_url)
 
       - name: Parse semver string
