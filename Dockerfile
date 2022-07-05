@@ -21,8 +21,9 @@ RUN apt-get update && \
     apt-get install -y wine-development
 
 RUN export WINBOX_URL=$(curl -s -L https://mt.lv/winbox64 -o /dev/null -w '%{url_effective}') && \
-    echo ${WINBOX_URL} > /winbox_url
-ADD --chown=1000:0 ${WINBOX_URL} /opt/winbox/winbox64.exe
+    [[ $${WINBOX_URL} =~ /([0-9.]+)/ ]] && echo ${BASH_REMATCH[1]}.0 > /winbox_version && \
+    mkdir -p /opt/winbox && \
+    wget ${WINBOX_URL} -O /opt/winbox/winbox64.exe
 
 ADD startup.sh $STARTUPDIR/custom_startup.sh
 RUN chmod +x $STARTUPDIR/custom_startup.sh
