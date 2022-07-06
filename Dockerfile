@@ -20,7 +20,8 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y wine-development
 
-RUN ./winbox_download.sh
+ADD winbox_download.sh /tmp
+RUN /tmp/winbox_download.sh
 
 ADD startup.sh $STARTUPDIR/custom_startup.sh
 RUN chmod +x $STARTUPDIR/custom_startup.sh
