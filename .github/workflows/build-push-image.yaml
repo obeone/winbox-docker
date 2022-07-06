@@ -63,8 +63,8 @@ jobs:
         with:
           context: .
           pull: true
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          load: true
+          tags: winbox:latest,${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           cache-to: type=gha,mode=max
           cache-from: type=gha,mode=max
           
@@ -72,7 +72,7 @@ jobs:
         id: version
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          image: winbox:latest
           shell: /bin/sh
           run: |
             version="$(cat /winbox_version)"
@@ -100,3 +100,4 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.semver_parser.outputs.major }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.version }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.major }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
