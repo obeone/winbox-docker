@@ -62,8 +62,8 @@ jobs:
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
           context: .
-          load: true
           pull: true
+          push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           cache-to: type=gha,mode=max
           cache-from: type=gha,mode=max
@@ -100,4 +100,3 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.semver_parser.outputs.major }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.version }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.major }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
