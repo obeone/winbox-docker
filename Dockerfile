@@ -28,7 +28,7 @@ RUN WINBOX_URL="$(curl -s -L https://mt.lv/winbox64 -o /dev/null -w '%{url_effec
     else \
         echo "0.0.0" > /winbox_version; \
     fi && \
-    echo ::set-outputs name=winbox_version::$(cat /winbox_version)
+    echo ::set-output name=winbox_version::$(cat /winbox_version)
 
 ADD startup.sh $STARTUPDIR/custom_startup.sh
 RUN chmod +x $STARTUPDIR/custom_startup.sh

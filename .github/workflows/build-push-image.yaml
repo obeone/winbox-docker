@@ -68,22 +68,12 @@ jobs:
           cache-to: type=gha,mode=max
           cache-from: type=gha,mode=max
           
-      - name: Getting version
-        id: version
-        uses: addnab/docker-run-action@v3
-        with:
-          image: winbox:latest
-          shell: /bin/sh
-          run: |
-            version="$(cat /winbox_version)"
-            echo ::set-output name=version::$version
-            echo Version is $version
 
       - name: Parse semver string
         id: semver_parser 
         uses: booxmedialtd/ws-action-parse-semver@v1
         with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe
-          input_string: "${{ steps.version.outputs.version }}"
+          input_string: "${{ steps.build.outputs.version }}"
 
 
       - name: Publish image
