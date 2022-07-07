@@ -82,7 +82,7 @@ jobs:
       - name: Parse semver string
         id: semver_parser 
         uses: booxmedialtd/ws-action-parse-semver@v1
-        with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe
+        with: 
           input_string: "${{ steps.version.outputs.version }}"
 
         
@@ -97,4 +97,4 @@ jobs:
           $command ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.major }}
           $command ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.patch }}
           $command ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          docker push -a winbox:latest
+          docker push -a winbox
