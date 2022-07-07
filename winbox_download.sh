@@ -9,4 +9,3 @@ if [[ "${WINBOX_URL}" =~ /([0-9.]+)/ ]]; then
 else
     echo "0.0.0" > /winbox_version
 fi
-echo "::set-output name=winbox_version::$(cat /winbox_version)"

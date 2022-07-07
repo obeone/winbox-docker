@@ -69,6 +69,13 @@ jobs:
           cache-from: type=gha,mode=max
           
 
+      - name: Get version
+        id: version
+        run: |
+          VERSION="$(docker run --rm winbox:latest cat /winbox/version)"
+          echo ::set-output name=version::$VERSION
+          
+
       - name: Parse semver string
         id: semver_parser 
         uses: booxmedialtd/ws-action-parse-semver@v1
