@@ -69,11 +69,13 @@ jobs:
           cache-from: type=gha,mode=max
           
 
-      - name: Get version
-        id: version
-        run: |
-          VERSION="$(docker run --rm winbox:latest cat /winbox/version)"
-          echo ::set-output name=version::$VERSION
+      - name: Getting version
+        id: url
+        uses: addnab/docker-run-action@v3
+        with:
+          image:  winbox:latest
+          shell: /bin/sh
+          run: echo ::set-output name=url::$(cat /winbox_version)
           
 
       - name: Parse semver string
