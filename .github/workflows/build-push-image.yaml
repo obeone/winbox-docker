@@ -82,7 +82,7 @@ jobs:
         id: semver_parser 
         uses: booxmedialtd/ws-action-parse-semver@v1
         with: # https://download.mikrotik.com/winbox/3.36/winbox64.exe
-          input_string: "${{ steps.build.outputs.version }}"
+          input_string: "${{ steps.version.outputs.version }}"
 
 
       - name: Publish image
