@@ -1,5 +1,9 @@
 # Winbox in docker
 
+ [![Image
+ build](https://github.com/obeone/winbox-docker/actions/workflows/build-push-image.yaml/badge.svg)](https://github.com/obeone/winbox-docker/actions/workflows/build-push-image.yaml)
+ [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/obeone)](https://artifacthub.io/packages/search?repo=obeone)
+
 Use Mikrotik's Winbox with your browser !
 
 Using [KasmVNC](https://github.com/kasmtech/KasmVNC), this docker starts Winbox with Wine and make it avaiable in any browser.
@@ -27,4 +31,5 @@ docker run -d --shm-size=512m -p 6901:6901 -e VNC_PW=password -v winbox_wine:/ho
 ```
 
 ### Kubernetes (Helm)
-A helm chart exists, just follow [documentation](https://github.com/obeone/charts)
+A helm chart exists, just follow
+[documentation](https://github.com/obeone/charts)
