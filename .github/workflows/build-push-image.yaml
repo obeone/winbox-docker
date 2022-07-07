@@ -69,15 +69,6 @@ jobs:
           cache-from: type=gha,mode=max
           
 
-      - name: Getting version
-        id: url
-        uses: addnab/docker-run-action@v3
-        with:
-          image:  winbox:latest
-          shell: /bin/sh
-          run: echo ::set-output name=url::$(cat /winbox_version)
-          
-
       - name: Parse semver string
         id: semver_parser 
         uses: booxmedialtd/ws-action-parse-semver@v1
