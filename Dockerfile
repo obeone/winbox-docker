@@ -23,10 +23,11 @@ ENV KASM_SVC_AUDIO_INPUT 0
 
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \
     apt-get update && \
-    apt-get upgrade -y && \
-    apt-get dist-upgrade -y && \
+    apt-get upgrade --no-install-recommends -y && \
+    apt-get dist-upgrade --no-install-recommends -y && \
+    apt-get install -y --no-install-recommends wine-development && \
     apt-get autoremove -y && \
-    apt-get install -y wine-development
+    apt-get autoclean -y
 
 ADD winbox_download.sh /tmp
 RUN /tmp/winbox_download.sh
@@ -39,6 +40,7 @@ RUN chmod 755 $STARTUPDIR/custom_startup.sh
 # Update the desktop environment to be optimized for a single application
 RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/ && \
     cp /usr/share/extra/backgrounds/bg_kasm.png /usr/share/extra/backgrounds/bg_default.png
+
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \
     apt-get remove -y xfce4-panel
 
