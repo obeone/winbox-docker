@@ -53,7 +53,7 @@ jobs:
           context: .
           pull: true
           load: true
-          tags: winbox:latest,${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: winbox:latest
           cache-to: type=gha,mode=max
           cache-from: type=gha,mode=max
 
