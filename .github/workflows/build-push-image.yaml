@@ -103,7 +103,8 @@ jobs:
             ghcr.io/obeone/${{ env.IMAGE_NAME }}:latest
 
       - name: Sign the images with GitHub OIDC Token
-        run: cosign sign ${TAGS}
+        run: |
+          $(echo ${{ steps.push.outputs.metadata['image.name'] }} | jq '."image.name"' | read TAGS
+          cosign sign ${TAGS}
         env:
-          TAGS: ${{ steps.push.outputs.metadata['image.name'] }}
           COSIGN_EXPERIMENTAL: true
