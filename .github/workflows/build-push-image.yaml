@@ -13,8 +13,8 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: winbox
   IMAGES: |
-    docker.io/obebete/${{ env.IMAGE_NAME }}
-    ghcr.io/obeone/${{ env.IMAGE_NAME }}
+    docker.io/obebete/winbox
+    ghcr.io/obeone/winbox
 
 jobs:
   Build:
