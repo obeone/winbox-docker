@@ -104,7 +104,7 @@ jobs:
 
       - name: Sign the images with GitHub OIDC Token
         run: |
-          echo "${{ steps.push.outputs.metadata }}" | jq '."image.name"' | read TAGS
+          echo ${{ steps.push.outputs.metadata }} | jq '."image.name"' | read TAGS
           cosign sign ${TAGS}
         env:
           COSIGN_EXPERIMENTAL: true
