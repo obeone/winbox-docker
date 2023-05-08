@@ -2,6 +2,7 @@
 
  [![Image
  build](https://github.com/obeone/winbox-docker/actions/workflows/build-push-image.yaml/badge.svg)](https://github.com/obeone/winbox-docker/actions/workflows/build-push-image.yaml)
+![Version](https://img.shields.io/github/v/tag/obeone/winbox-docker?label=version)
  [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/obeone)](https://artifacthub.io/packages/search?repo=obeone)
 
 Use Mikrotik's Winbox with your browser !
