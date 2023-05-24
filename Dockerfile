@@ -29,13 +29,10 @@ RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/
     apt-get autoremove -y && \
     apt-get autoclean -y
 
-ADD winbox_download.sh /tmp
+COPY --chmod=0755 winbox_download.sh /tmp
 RUN /tmp/winbox_download.sh
 
-ADD startup.sh $STARTUPDIR/custom_startup.sh
-RUN chmod +x $STARTUPDIR/custom_startup.sh
-RUN chmod 755 $STARTUPDIR/custom_startup.sh
-
+COPY --chmod=0755 startup.sh $STARTUPDIR/custom_startup.sh
 
 # Update the desktop environment to be optimized for a single application
 RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/ && \
@@ -44,7 +41,7 @@ RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \
     apt-get remove -y xfce4-panel
 
-ADD winetricks_install.sh /tmp
+COPY --chmod=0755 winetricks_install.sh /tmp
 RUN bash /tmp/winetricks_install.sh && \
     update_winetricks
 ######### End Customizations ###########
