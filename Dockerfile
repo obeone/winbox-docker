@@ -50,3 +50,10 @@ WORKDIR $HOME
 RUN mkdir -p $HOME/.wine && chown -R 1000:0 $HOME
 
 USER 1000
+
+LABEL org.opencontainers.image.title="Winbox"
+LABEL org.opencontainers.image.description="Use Mikrotik's Winbox with your browser !"
+LABEL org.opencontainers.image.vendor="Mikrotik"
+LABEL org.opencontainers.image.authors="Grégoire Compagnon <obeone@obeone.org>"
+LABEL org.opencontainers.image.version="${VERSION}"
+LABEL org.opencontainers.image.source="https://github.com/obeone/winbox-mikrotik"
