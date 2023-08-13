@@ -1,15 +1,8 @@
 #!/bin/sh
-# Create and switch to a temporary directory writeable by current user. See:
-#   https://www.tldp.org/LDP/abs/html/subshells.html
+
 cd "$(mktemp -d)" || exit 1
 
-# Use a BASH "here document" to create an updater shell script file.
-# See:
-#   https://www.tldp.org/LDP/abs/html/here-docs.html
-# >  outputs stdout to a file, overwriting any pre-existing file
-# << takes input, directly from the script itself, till the second '_EOF_SCRIPT' marker, as stdin
-# the cat command hooks these 2 streams up (stdin and stdout)
-###### create update_winetricks START ########
+
 cat > update_winetricks <<_EOF_SCRIPT
 #!/bin/sh
 
@@ -50,4 +43,3 @@ chmod +x update_winetricks
 
 # We must escalate privileges to root, as regular Linux users do not have write access to '/usr/bin'.
  mv update_winetricks /usr/bin/
-
