@@ -14,7 +14,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: winbox
   IMAGES: |
-    docker.io/obebete/winbox
+    docker.io/obeoneorg/winbox
     ghcr.io/obeone/winbox
 
 jobs:
