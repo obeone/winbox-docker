@@ -1,14 +1,6 @@
 name: Build and publish
 on:
-  schedule:
-    - cron: "23 2 * * *"
-  push:
-    branches:
-      - main
-      - slim
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 env:
   # github.repository as <account>/<repo>

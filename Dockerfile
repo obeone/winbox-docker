@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1.4
 ARG BASE_TAG="develop"
-ARG BASE_IMAGE="core-ubuntu-focal"
+ARG BASE_IMAGE="core-ubuntu-noble"
 
 FROM kasmweb/$BASE_IMAGE:$BASE_TAG
 USER root
@@ -35,8 +35,7 @@ RUN /tmp/winbox_download.sh
 COPY --chmod=0755 startup.sh $STARTUPDIR/custom_startup.sh
 
 # Update the desktop environment to be optimized for a single application
-RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/ && \
-    cp /usr/share/extra/backgrounds/bg_kasm.png /usr/share/extra/backgrounds/bg_default.png
+RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/ 
 
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \
     apt-get remove -y xfce4-panel

@@ -1,7 +1,21 @@
 # Winbox in docker
 
- [![Image
- build](https://github.com/obeone/winbox-docker/actions/workflows/build-push-image.yaml/badge.svg)](https://github.com/obeone/winbox-docker/actions/workflows/build-push-image.yaml)
+> **This project is archived and no longer maintained.**
+>
+> Archived in September 2026. The last release is v3.40.0 (August 2023) and
+> nothing has been rebuilt since: the published images
+> (`ghcr.io/obeone/winbox`, `docker.io/obeoneorg/winbox`) are already old,
+> built on Ubuntu 20.04 with the Wine, KasmVNC and Winbox versions of that
+> time, and have received no security updates since then. They stay available
+> for reference only. Run them at your own risk, or better, not at all.
+>
+> MikroTik now ships WinBox 4 natively for Linux and macOS, which removes most
+> of the reason this project existed. Get it from the
+> [MikroTik download page](https://mikrotik.com/download).
+>
+> The Helm chart in [obeone/charts](https://github.com/obeone/charts) is
+> deprecated as well. Issues and pull requests are no longer handled.
+
 ![Version](https://img.shields.io/github/v/tag/obeone/winbox-docker?label=version)
  [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/obeone)](https://artifacthub.io/packages/search?repo=obeone)
 
